@@ -56,7 +56,9 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
                 NewsFragment1 newsFragment1 = new NewsFragment1();
                 FragmentManager fragmentManager = tabFragment3.getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.title1, newsFragment1);
+                fragmentTransaction.replace(R.id.myfragment, newsFragment1);
+                fragmentTransaction.addToBackStack(null);
+
                 fragmentTransaction.commit();
             }
         });
