@@ -1,0 +1,60 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="30dp"
+    android:weightSum="1">
+
+    <TextView
+        android:text="Informed"
+        android:layout_width="309dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:typeface="monospace"
+        android:textColor="?android:attr/textColorLink"
+        android:textAlignment="center"
+        android:textSize="42sp"
+        android:textAllCaps="true"
+        android:layout_marginTop="100dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:fontFamily="cursive"
+        tools:text="Informed"
+        android:textStyle="normal|bold" />
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:id="@+id/username"
+        android:hint="Username"
+        android:layout_marginTop="80dp"
+        android:textColor="#31033c"
+        android:drawablePadding="5dp"
+        android:textColorHint="#999"
+        android:layout_width="match_parent"
+        android:layout_weight="0.05"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/password"
+        android:hint="Password"
+        android:layout_marginTop="10dp"
+        android:textColor="#31033c"
+        android:drawablePadding="5dp"
+        android:textColorHint="#999"
+        android:layout_weight="0.04" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="SignIn"
+        android:id="@+id/button"
+        android:layout_gravity="center_horizontal"
+        android:onClick="checkLogin"/>
+
+</LinearLayout>
