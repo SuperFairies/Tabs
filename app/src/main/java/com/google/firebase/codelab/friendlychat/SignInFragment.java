@@ -62,7 +62,6 @@ public class SignInFragment extends Fragment implements GoogleApiClient.OnConnec
    public View onCreateView(LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout. activity_sign_in , container, false);
         button = (Button)view.findViewById(R.id.sign_in_button);
         mSignInButton.setOnClickListener(this);
