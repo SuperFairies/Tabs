@@ -125,9 +125,8 @@ public class ChatFragment extends Fragment implements
         View view = inflater.inflate(R.layout. activity_main , container, false);
         messageEditText = (EditText) view.findViewById(R.id.messageEditText);
         button = (Button) view.findViewById(R.id.sendButton);
-        return super.onCreateView(inflater, container, savedInstanceState);
+        return view;
 
-        //        setContentView(R.layout.activity_main); //  onCreateView
 
     }
 
