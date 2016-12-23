@@ -35,9 +35,11 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
+
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
@@ -54,30 +56,16 @@ public class SignInFragment extends Fragment implements GoogleApiClient.OnConnec
 
     private GoogleApiClient mGoogleApiClient;
     private FirebaseAuth mFirebaseAuth;
-    private Button button;
-
 
     @Nullable
     @Override
-   public View onCreateView(LayoutInflater inflater,
+    public View onCreateView(LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout. activity_sign_in , container, false);
-        button = (Button)view.findViewById(R.id.sign_in_button);
+        View view = inflater.inflate(R.layout.activity_sign_in, container, false);
+        mSignInButton = (SignInButton) view.findViewById(R.id.sign_in_button);
         mSignInButton.setOnClickListener(this);
-        mSignInButton = (SignInButton) getActivity().findViewById(R.id.sign_in_button);
         return view;
-
-        //(R.layout.activity_sign_in)
-
-        /*
-
-        // Assign fields
-        mSignInButton = (SignInButton) findViewById(R.id.sign_in_button);
-
-        Set click listeners
-        mSignInButton.setOnClickListener(this);
-         */
     }
 
     @Override
@@ -88,13 +76,23 @@ public class SignInFragment extends Fragment implements GoogleApiClient.OnConnec
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
+
+
         mGoogleApiClient = new GoogleApiClient.Builder(this.getActivity())
                 .enableAutoManage(this.getActivity() /* FragmentActivity */, this /* OnConnectionFailedListener */)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
 
-        // Initialize FirebaseAuth
+//         Initialize FirebaseAuth
         mFirebaseAuth = FirebaseAuth.getInstance();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        mGoogleApiClient.stopAutoManage(getActivity());
+        mGoogleApiClient.disconnect();
     }
 
     private void handleFirebaseAuthResult(AuthResult authResult) {
@@ -128,7 +126,7 @@ public class SignInFragment extends Fragment implements GoogleApiClient.OnConnec
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+        // Result returned from launchinOg the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             if (result.isSuccess()) {
@@ -146,6 +144,17 @@ public class SignInFragment extends Fragment implements GoogleApiClient.OnConnec
         Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mFirebaseAuth.signInWithCredential(credential)
+                .addOnSuccessListener(this.getActivity(), new OnSuccessListener<AuthResult>() {
+                    @Override
+                    public void onSuccess(AuthResult authResult) {
+                        MyFragment2 secondFragment = new MyFragment2();
+                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.myfragment, secondFragment);
+                        fragmentTransaction.commit();
+
+                    }
+                })
                 .addOnCompleteListener(this.getActivity(), new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {

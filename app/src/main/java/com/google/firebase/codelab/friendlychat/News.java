@@ -1,8 +1,5 @@
 package com.google.firebase.codelab.friendlychat;
 
-/**
- * Created by Maksym on 02.12.2016.
- */
 
 public class News {
     private String title, text;

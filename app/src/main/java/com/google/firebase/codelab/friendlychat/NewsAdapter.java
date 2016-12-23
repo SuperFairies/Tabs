@@ -1,9 +1,5 @@
 package com.google.firebase.codelab.friendlychat;
 
-/**
- * Created by Maksym on 02.12.2016.
- */
-
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;

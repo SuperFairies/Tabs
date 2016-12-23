@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
     <Button
         android:text="Check In"
-        android:layout_width="wrap_content"
+        android:layout_width="103dp"
         android:layout_height="wrap_content"
         android:id="@+id/button1"
-        android:layout_marginBottom="48dp"
-        android:fontFamily="sans-serif-condensed"
+        android:background="@color/common_google_signin_btn_text_light_focused"
+        android:textColor="@color/common_google_signin_btn_text_light_focused"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="48dp"
+        android:textSize="14sp" />
 
-</LinearLayout>
+</RelativeLayout>
+
+

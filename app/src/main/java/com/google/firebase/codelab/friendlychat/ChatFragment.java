@@ -122,25 +122,13 @@ public class ChatFragment extends Fragment implements
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-         super.onCreate(savedInstanceState);
-        getActivity().setContentView(R.layout.activity_main);
-        
-
-        View view = inflater.inflate(R.layout. activity_main , container, false);
-
+        View view = inflater.inflate(R.layout.chat_fragment, container, false);
+        messageEditText = (EditText) view.findViewById(R.id.messageEditText);
+        button = (Button) view.findViewById(R.id.sendButton);
         return view;
-
-        //        setContentView(R.layout.activity_main); //  onCreateView
 
     }
 
-
-
-
-
-
-
-    @Override
     public void onStart() {
         super.onStart();
 
@@ -154,12 +142,6 @@ public class ChatFragment extends Fragment implements
 
         mUsername = mFirebaseUser.getDisplayName();
         mPhotoUrl = mFirebaseUser.getPhotoUrl().toString();
-
-
-        mGoogleApiClient = new GoogleApiClient.Builder(getActivity())
-                .enableAutoManage(getActivity() /* FragmentActivity */, this /* OnConnectionFailedListener */)
-                .addApi(Auth.GOOGLE_SIGN_IN_API)
-                .build();
 
         mProgressBar = (ProgressBar) getView().findViewById(R.id.progressBar);
         mMessageRecyclerView = (RecyclerView) getView().findViewById(R.id.messageRecyclerView);
@@ -222,11 +204,6 @@ public class ChatFragment extends Fragment implements
         mMessageRecyclerView.setLayoutManager(mLinearLayoutManager);
         mMessageRecyclerView.setAdapter(mFirebaseAdapter);
 
-        // Initialize and request AdMob ad.
-        mAdView = (AdView)  getView().findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
-
         // Initialize Firebase Measurement.
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(getActivity());
 
@@ -242,7 +219,7 @@ public class ChatFragment extends Fragment implements
         // Define default config values. Defaults are used when fetched config values are not
         // available. Eg: if an error occurred fetching values from the server.
         Map<String, Object> defaultConfigMap = new HashMap<>();
-        defaultConfigMap.put("friendly_msg_length", 10L);
+        defaultConfigMap.put("friendly_msg_length", 1000L);
 
         // Apply config settings and default values.
         mFirebaseRemoteConfig.setConfigSettings(firebaseRemoteConfigSettings);
@@ -251,7 +228,7 @@ public class ChatFragment extends Fragment implements
         // Fetch remote config.
         fetchConfig();
 
-        mMessageEditText = (EditText) getView().findViewById (R.id.messageEditText);
+        mMessageEditText = (EditText) getView().findViewById(R.id.messageEditText);
         mMessageEditText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(mSharedPreferences
                 .getInt(CodelabPreferences.FRIENDLY_MSG_LENGTH, DEFAULT_MSG_LENGTH_LIMIT))});
         mMessageEditText.addTextChangedListener(new TextWatcher() {
@@ -273,7 +250,7 @@ public class ChatFragment extends Fragment implements
             }
         });
 
-        mSendButton = (Button)  getView().findViewById (R.id.sendButton);
+        mSendButton = (Button) getView().findViewById(R.id.sendButton);
         mSendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

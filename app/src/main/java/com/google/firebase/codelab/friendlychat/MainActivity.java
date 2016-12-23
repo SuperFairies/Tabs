@@ -1,9 +1,5 @@
 package com.google.firebase.codelab.friendlychat;
 
-/**
- * Created by Maksym on 07.12.2016.
- */
-
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -21,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        ChatFragment firstFragment = new ChatFragment();
+        SignInFragment firstFragment = new SignInFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.myfragment, firstFragment);

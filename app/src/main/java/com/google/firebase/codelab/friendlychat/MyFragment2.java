@@ -1,8 +1,6 @@
 package com.google.firebase.codelab.friendlychat;
 
-/**
- * Created by Maksym on 02.12.2016.
- */
+
 import android.support.design.widget.TabLayout;
 import android.os.Bundle;
 
@@ -31,7 +29,7 @@ public class MyFragment2 extends SignInFragment {
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         viewPager = (ViewPager) view.findViewById(R.id.pager);
-        //adapter = new PageAdapter(getActivity().getSupportFragmentManager(), tabLayout.getTabCount());
+        adapter = new PageAdapter(getActivity().getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {

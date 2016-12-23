@@ -2,4 +2,6 @@
 <resources>
     <color name="background_material_light">#f8f9fa</color>
     <color name="foreground_material_light">#fcfcfc</color>
+    <color name="primary_material_light">#d1d1d1</color>
+    <color name="accent_material_dark">#c4484b</color>
 </resources>

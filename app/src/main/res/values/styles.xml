@@ -3,19 +3,26 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/primary_material_dark_2</item>
+        <item name="colorPrimaryDark">@android:color/primary_dark_material_dark</item>
+        <item name="colorAccent">@color/accent_material_dark</item>
 
         <item name="android:colorButtonNormal">@drawable/button_selector</item>
         <item name="colorButtonNormal">@drawable/button_selector</item>
         <item name="android:buttonStyle">@style/FriendlyButtonStyle</item>
-        <item name="android:colorBackground">@color/background_material_light</item>
-        <item name="android:colorForeground">@color/foreground_material_light</item>
+        <item name="android:colorBackground">@color/colorTitle</item>
+        <item name="android:colorForeground">@android:color/foreground_material_light</item>
     </style>
 
     <style name="FriendlyButtonStyle" parent="Widget.AppCompat.Button">
-        <item name="android:textColor">@color/colorTitle</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
 
+    </style>
+
+    <style name="Informed" parent="Theme.AppCompat.Light.NoActionBar" >
+        <item name="android:colorBackground">@color/colorTitle</item>
+        <item name="android:textColorPrimaryInverse">@color/colorPrimaryDark</item>
+        <item name="android:textColorSecondaryInverse">@color/common_google_signin_btn_text_light
+        </item>
     </style>
 </resources>
